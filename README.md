@@ -1,7 +1,7 @@
 # Weather Applications
 ### Introduction
 This is a small command-line application that fetches weather data on the basis of cities taken user input.
-The weather data is fetched from (http://openweather.org).
+The weather data is fetched from (http://openweather.org). The data from the site has been serialized to Java Model Objects which has been thereafter altered as per user needs.
 
 ### Features
 The features are pretty straight-forward. At this initial phase users are provided with limited functinality, namely:
