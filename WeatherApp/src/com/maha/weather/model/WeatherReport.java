@@ -9,6 +9,116 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class WeatherReport {
+	class Clouds {
+		int all;
+
+		public int getAll() {
+			return all;
+		}
+	}
+	
+	class Coordinates {
+		private double lon;
+		private double lat;
+
+		public double getLon() {
+			return lon;
+		}
+
+		public double getLat() {
+			return lat;
+		}
+	}
+	
+	class Main {
+		double temp;
+		int humidity;
+		double pressure;
+		double temp_min;
+		double temp_max;
+
+		public double getTemp() {
+			return temp;
+		}
+
+		public int getHumidity() {
+			return humidity;
+		}
+
+		public double getPressure() {
+			return pressure;
+		}
+
+		public double getTemp_min() {
+			return temp_min;
+		}
+
+		public double getTemp_max() {
+			return temp_max;
+		}
+	}
+	
+	class Sys {
+		private String country;
+		private long sunrise;
+		private long sunset;
+
+		public String getCountry() {
+			return country;
+		}
+
+		public long getSunrise() {
+			return sunrise;
+		}
+
+		public long getSunset() {
+			return sunset;
+		}
+	}
+	
+	class Weather {
+		long id;
+		String main;
+		String description;
+		String icon;
+
+		public long getId() {
+			return id;
+		}
+
+		public String getMain() {
+			return main;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public String getIcon() {
+			return icon;
+		}
+
+	}
+	
+	class Wind {
+		double speed;
+		double gust;
+		double deg;
+
+		public double getSpeed() {
+			return speed;
+		}
+
+		public double getGust() {
+			return gust;
+		}
+
+		public double getDeg() {
+			return deg;
+		}
+
+	}
+	
 	Coordinates coord;
 	Sys sys;
 	List<Weather> weather = new ArrayList<Weather>();

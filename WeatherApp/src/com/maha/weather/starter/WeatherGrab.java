@@ -47,14 +47,13 @@ public class WeatherGrab implements Runnable {
 				.queryParam("type", "like")
 				.accept(MediaType.APPLICATION_JSON)
 				.get(String.class);
-//		System.out.println(resp);
 		weather = gson.fromJson(resp, WeatherResults.class);
 		WeatherReport weatherReport;
 		if (weather.getCount() > 1) {
 			for (int i = 0; i < weather.getCount(); i++) {
 				weatherReport = weather.getList().get(i);
 				System.out.println((i+1) + ". " + weatherReport.getName() + ", "
-						+ weatherReport.getSys().getCountry());
+						+ weatherReport.getCountry());
 			}
 		}
 		WeatherRunner.weatherResults.add(weather);
