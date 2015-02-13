@@ -14,6 +14,13 @@ The features are pretty straight-forward. At this initial phase users are provid
 * Run the JAR file along-with the desired parameters or type `java -jar WeatherApp.jar --help` for help
 
 ### Examples
+* Configuring output results via properties file
+ * In the weather-conf.props file just set the value corresponding to the field you would like to see in the result as `true`
+ ```
+ #weather-conf.props
+ Country=true
+ Condition=false
+ ```
 * Searching for cities
   * `java -jar WeatherApp.jar sydney tokyo`
 * Searching for cites sorted by temperature
