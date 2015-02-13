@@ -55,6 +55,20 @@ public class WeatherRunner {
 		}
 
 	}
+	
+	private Method getMethodByName(String name, Class methodClass) {
+		StringBuilder methodName = new StringBuilder("get");
+		methodName.append(name);
+		Method method = null;
+		try {
+			method = methodClass.getMethod(methodName.toString(), null);
+		} catch (SecurityException e) {
+			System.err.println(e.getMessage());
+		} catch (NoSuchMethodException e) {
+			System.err.println(e.getMessage());
+		}
+		return method;
+	}
 
 	private int getMax(final String column) {
 		@SuppressWarnings("unchecked")
@@ -66,20 +80,13 @@ public class WeatherRunner {
 						WeatherReport rep = (WeatherReport) input;
 						StringBuilder ret = new StringBuilder();
 						try {
-							StringBuilder methodName = new StringBuilder(column);
-							methodName.insert(0, "get");
-							Method method = WeatherReport.class.getMethod(
-									methodName.toString(), null);
+							Method method = getMethodByName(column, WeatherReport.class);
 							ret.append(method.invoke(rep, null));
 						} catch (IllegalArgumentException e) {
 							System.err.println(e.getMessage());
 						} catch (IllegalAccessException e) {
 							System.err.println(e.getMessage());
 						} catch (InvocationTargetException e) {
-							System.err.println(e.getMessage());
-						} catch (SecurityException e) {
-							System.err.println(e.getMessage());
-						} catch (NoSuchMethodException e) {
 							System.err.println(e.getMessage());
 						}
 						return Integer.valueOf(ret.length());
@@ -137,11 +144,9 @@ public class WeatherRunner {
 
 			Iterator iterator = searchFields.iterator();
 			while (iterator.hasNext()) {
-				methodName.append("get").append(iterator.next());
 				Method method;
 				try {
-					method = WeatherReport.class.getMethod(
-							methodName.toString(), null);
+					method = getMethodByName((String) iterator.next(), WeatherReport.class);
 					returnType.append(method.getReturnType().getSimpleName());
 					if (returnType.toString().equals("Date")) {
 						Date result = (Date) method.invoke(weatherReport, null);
@@ -151,10 +156,6 @@ public class WeatherRunner {
 								weatherReport, null)));
 					else
 						results.add(method.invoke(weatherReport, null));
-				} catch (SecurityException e) {
-					System.err.println(e.getMessage());
-				} catch (NoSuchMethodException e) {
-					System.err.println(e.getMessage());
 				} catch (IllegalArgumentException e) {
 					System.err.println(e.getMessage());
 				} catch (IllegalAccessException e) {
