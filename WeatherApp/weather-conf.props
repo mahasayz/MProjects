@@ -1,0 +1,12 @@
+Name=true
+Country=true
+Condition=true
+Coord=false
+Sunrise=true
+Sunset=false
+Temp=true
+TempMin=true
+TempMax=false
+Humidity=false
+Pressure=true
+Speed=false
